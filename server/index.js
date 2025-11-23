@@ -1,6 +1,3 @@
-import '@babel/register';
-import '@babel/preset-env';
-import '@babel/preset-react';
 
 import express from "express";
 import mongoose from "mongoose";
