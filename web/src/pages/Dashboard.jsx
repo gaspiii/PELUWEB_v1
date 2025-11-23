@@ -18,7 +18,8 @@ export default function Dashboard() {
     const fetchSalon = async () => {
       try {
         console.log("🔍 Verificando salón del usuario...");
-        const res = await fetch("http://localhost:4000/api/salons/mine", {
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const res = await fetch(`${API_URL}/api/salons/mine`, {
           headers: { 
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json"

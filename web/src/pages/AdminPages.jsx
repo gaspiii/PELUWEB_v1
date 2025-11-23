@@ -26,7 +26,8 @@ export default function AdminPages() {
   const fetchPaginas = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:4000/api/salons", {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const res = await fetch(`${API_URL}/api/salons`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       
@@ -51,7 +52,8 @@ export default function AdminPages() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:4000/api/salons/${id}/estado`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const res = await fetch(`${API_URL}/api/salons/${id}/estado`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

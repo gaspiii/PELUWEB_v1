@@ -17,7 +17,8 @@ export default function Clientes() {
   const fetchClientes = async () => {
     try {
       const token = getToken();
-      const res = await fetch("http://localhost:4000/api/bookings", {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const res = await fetch(`${API_URL}/api/bookings`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

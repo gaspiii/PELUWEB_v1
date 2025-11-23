@@ -11,7 +11,8 @@ export default function PeluqueriaPage() {
   useEffect(() => {
     const fetchSalon = async () => {
       try {
-        const res = await fetch(`http://localhost:4000/api/salons/public/${slug}`);
+        const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const res = await fetch(`${API_URL}/api/salons/public/${slug}`);
         const data = await res.json();
         if (res.ok) {
           setPeluqueria(data);

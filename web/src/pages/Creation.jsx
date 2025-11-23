@@ -68,9 +68,11 @@ export default function Creation() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    fetch("http://localhost:4000/api/users/profile", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+  
+  fetch(`${API_URL}/api/users/profile`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
       .then((res) => res.json())
       .then((data) => {
         if (data?._id) setUser(data);
@@ -87,7 +89,8 @@ export default function Creation() {
     }
 
     try {
-      const res = await fetch("http://localhost:4000/api/salons", {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+      const res = await fetch(`${API_URL}/api/salons`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
